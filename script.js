@@ -246,7 +246,7 @@ class MatrixRain {
     initializeDrops() {
         // Matrix simboliai: skaičiai, raidės, matematikos simboliai
         this.characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-*/=()[]{}πℯ∞√∑∏∫∂∇αβγδεζηθλμξρστφχψω';
-        this.fontSize = 14;
+        this.fontSize = 15;
         this.columns = Math.floor(this.canvas.width / this.fontSize);
         this.drops = [];
         
