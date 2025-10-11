@@ -4,48 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+<body>
     <div class="calculator">
         <input type="text" id="display" disabled>
         <div class="buttons">
-            <button class = "button clear" onclick="clearDisplay()">C</button>
-            <button class = "button delete" onclick="deleteLast()">CE</button>
-            <button class = "button operator" onclick="appendOperation('/')">/</button>
-            <button class = "button operator" onclick="appendOperation('*')">*</button>
 
-            <button class = "button number" onclick="appendNumber('7')">7</button>
-            <button class = "button number" onclick="appendNumber('8')">8</button>
-            <button class = "button number" onclick="appendNumber('9')">9</button>
-            <button class = "button operator" onclick="appendOperation('-')">-</button>
-
-            <button class = "button number" onclick="appendNumber('4')">4</button>
-            <button class = "button number" onclick="appendNumber('5')">5</button>
-            <button class = "button number" onclick="appendNumber('6')">6</button>
-            <button class = "button operator" onclick="appendOperation('+')">+</button>
-
-            <button class = "button number" onclick="appendNumber('1')">1</button>
-            <button class = "button number" onclick="appendNumber('2')">2</button>
-            <button class = "button number" onclick="appendNumber('3')">3</button>
-            <button class = "button number" onclick="appendNumber('0')">0</button>
-
-            <button class = "button decimal" onclick="appendDecimal()">.</button>
-            <button class = "button equals" onclick="calculateResult()">=</button>
-
-            <button class="button root" onclick="appendOperation('Math.sqrt()')">√</button>
-            <button class="button power" onclick="appendOperation('**')">^</button>
-
-            <button class = "button sin" onclick="appendFunction('Math.sin()')">sin</button>
-            <button class = "button cos" onclick="appendFunction('Math.cos()')">cos</button>
-
+            <button class="button function" onclick="pridetiMatFunkcija('sin')">sin</button>
+            <button class="button function" onclick="pridetiMatFunkcija('cos')">cos</button>
+            <button class="button function" onclick="pridetiMatFunkcija('tan')">tan</button>
+            <button class="button function" onclick="pridetiMatFunkcija('square')">x²</button>
+            <button class="button function" onclick="pazimiKeisti()">+/-</button>
             
+           
+            <button class = "button number" onclick="pridetiSkaiciu('7')">7</button>
+            <button class = "button number" onclick="pridetiSkaiciu('8')">8</button>
+            <button class = "button number" onclick="pridetiSkaiciu('9')">9</button>
+            <button class = "button delete" onclick="istrintiPaskutini()">DEL</button>
+            <button class = "button clear" onclick="isvalytiEkrana()">AC</button>
+            
+           
+            <button class = "button number" onclick="pridetiSkaiciu('4')">4</button>
+            <button class = "button number" onclick="pridetiSkaiciu('5')">5</button>
+            <button class = "button number" onclick="pridetiSkaiciu('6')">6</button>
+            <button class = "button operator" onclick="pridetiVeiksma('*')">*</button>
+            <button class = "button operator" onclick="pridetiVeiksma('/')">/</button>
+            
+           
+            <button class = "button number" onclick="pridetiSkaiciu('1')">1</button>
+            <button class = "button number" onclick="pridetiSkaiciu('2')">2</button>
+            <button class = "button number" onclick="pridetiSkaiciu('3')">3</button>
+            <button class = "button operator" onclick="pridetiVeiksma('+')">+</button>
+            <button class = "button operator" onclick="pridetiVeiksma('-')">-</button>
 
-
-
-
-
-
+            <button class = "button number" onclick="pridetiSkaiciu('0')">0</button>
+            <button class = "button decimal" onclick="pridetiKableli()">.</button>
+            <button class="button root" onclick="pridetiSakniesNaujinta()">√</button>
+            <button class="button power" onclick="pridetiVeiksma('**')">^</button>
+            <button class = "button equals" onclick="apskaiciuotiRezultata()">=</button>
 
         </div>
+    </div>
+    
+    <!-- Matrix Rain Effect -->
+    <div class="matrix-rain">
+        <canvas id="matrix-canvas"></canvas>
+    </div>
+</body>
 </html>
