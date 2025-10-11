@@ -159,16 +159,9 @@ body::before {
 .button {
     background: linear-gradient(145deg, rgba(0, 30, 0, 0.8) 0%, rgba(0, 50, 0, 0.6) 100%);
     border: 1px solid rgba(0, 255, 0, 0.2);
+    padding: 22px;
     font-size: 1.4rem;
     font-weight: 600;
-    padding: 22px;
-    cursor: pointer;
-    background: linear-gradient(145deg, rgba(0, 30, 0, 0.8) 0%, rgba(0, 50, 0, 0.6) 100%);
-    border: 1px solid rgba(0, 255, 0, 0.2);
-    font-size: 1.4rem;
-    font-weight: 600;
-    padding: 22px;
-    cursor: pointer;
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: #00ff00;
