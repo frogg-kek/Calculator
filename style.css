@@ -12,10 +12,10 @@ body {
         radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.05) 0%, transparent 50%),
         linear-gradient(45deg, rgba(0, 255, 0, 0.02) 0%, rgba(0, 0, 0, 0.8) 100%);
     margin: 0;
-    padding: 20px;
+    padding: 10px; /* Sumažintas padding mobiliems */
     box-sizing: border-box;
     color: #00ff00;
-    overflow: hidden;
+    overflow-x: hidden; /* Slepia horizontalų slinkimą */
 }
 
 body::before {
@@ -38,7 +38,9 @@ body::before {
 }
 
 .calculator {
-    width: 450px;
+    width: 100%; /* Pradžioje 100% plotis */
+    max-width: 450px; /* Maksimalus plotis */
+    min-width: 280px; /* Minimalus plotis */
     background: rgba(0, 20, 0, 0.98);
     backdrop-filter: blur(15px);
     border-radius: 15px;
@@ -46,7 +48,7 @@ body::before {
         0 0 50px rgba(0, 255, 0, 0.4),
         inset 0 1px 0 rgba(0, 255, 0, 0.3),
         0 20px 50px rgba(0, 0, 0, 0.8);
-    padding: 25px;
+    padding: 20px; /* Sumažintas padding */
     border: 2px solid rgba(0, 255, 0, 0.4);
     position: relative;
     animation: hackerGlow 2s ease-in-out infinite alternate;
@@ -74,15 +76,15 @@ body::before {
 
 #display {
     width: 100%;
-    height: 100px;
+    height: 80px; /* Sumažintas aukštis mobiliems */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem; /* Sumažintas šriftas */
     font-weight: 400;
-    padding: 25px;
-    margin-bottom: 30px;
+    padding: 15px; /* Sumažintas padding */
+    margin-bottom: 20px; /* Sumažintas margin */
     border: 2px solid rgba(0, 255, 0, 0.3);
     background: linear-gradient(135deg, rgba(0, 20, 0, 0.9) 0%, rgba(0, 40, 0, 0.8) 100%);
     border-radius: 15px;
@@ -90,7 +92,7 @@ body::before {
     box-shadow: inset 0 0 30px rgba(0, 255, 0, 0.1),
                 0 0 20px rgba(0, 255, 0, 0.2),
                 0 10px 30px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
+    letter-spacing: 1px; /* Sumažintas letter-spacing */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -153,14 +155,14 @@ body::before {
 .buttons {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
+    gap: 10px; /* Sumažintas gap mobiliems */
 }
 
 .button {
     background: linear-gradient(145deg, rgba(0, 30, 0, 0.8) 0%, rgba(0, 50, 0, 0.6) 100%);
     border: 1px solid rgba(0, 255, 0, 0.2);
-    padding: 22px;
-    font-size: 1.4rem;
+    padding: 18px; /* Sumažintas padding */
+    font-size: 1.2rem; /* Sumažintas šriftas */
     font-weight: 600;
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -175,6 +177,8 @@ body::before {
     text-align: center;
     font-family: 'Fira Code', 'Consolas', monospace;
     text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+    cursor: pointer; /* Pridėtas cursor */
+    min-height: 50px; /* Minimalus aukštis */
 }
 
 .button::before {
@@ -376,5 +380,81 @@ body::after {
     100% { 
         opacity: 0.5;
         filter: blur(0.3px) brightness(1.2);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .calculator {
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    #display {
+        height: 70px;
+        font-size: 1.8rem;
+        padding: 12px;
+        margin-bottom: 15px;
+        letter-spacing: 0.5px;
+    }
+    
+    .buttons {
+        gap: 8px;
+    }
+    
+    .button {
+        padding: 15px;
+        font-size: 1.1rem;
+        min-height: 45px;
+        border-radius: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+        align-items: flex-start; /* Skaičiuotuvas prie viršaus */
+        padding-top: 20px;
+    }
+    
+    .calculator {
+        padding: 12px;
+        border-radius: 10px;
+        min-width: 260px;
+    }
+    
+    #display {
+        height: 60px;
+        font-size: 1.5rem;
+        padding: 10px;
+        margin-bottom: 12px;
+        letter-spacing: 0px;
+    }
+    
+    .buttons {
+        gap: 6px;
+    }
+    
+    .button {
+        padding: 12px 8px;
+        font-size: 1rem;
+        min-height: 40px;
+        border-radius: 6px;
+    }
+    
+    @media screen and (max-width: 320px) {
+        .buttons {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        
+        .button {
+            padding: 10px 6px;
+            font-size: 0.9rem;
+            min-height: 35px;
+        }
     }
 }
