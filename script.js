@@ -2,16 +2,48 @@
 let dabartinisBandymas = '';
 let ankstenisIvestis = '';
 let operatorius = '';
-let reikiaAtatrinti = false;
+let ReikiaIstrinti = false;
 let visaIsraiška = ''; // Visa išraiška rodymui
 
 function atnaujintiEkrana() {
     const ekranas = document.getElementById('display');
+    let tekstas;
+    
     if (visaIsraiška !== '') {
-        ekranas.value = visaIsraiška;
+        tekstas = visaIsraiška;
     } else {
-        ekranas.value = dabartinisBandymas || '0';
+        tekstas = dabartinisBandymas || '0';
     }
+    
+    ekranas.value = tekstas;
+    
+    // Automatiškai keisti šrifto dydį pagal teksto ilgį
+    prisitaikytiSrifta(ekranas, tekstas);
+}
+
+function prisitaikytiSrifta(ekranas, tekstas) {
+    // Pašalinti visas esamas šrifto klases
+    ekranas.classList.remove('text-small', 'text-smaller', 'text-tiny', 'text-micro', 'error-text');
+    
+    // Jei tai klaidos pranešimas
+    if (tekstas.includes('AR TU SVEIKAS?')) {
+        ekranas.classList.add('error-text');
+        return;
+    }
+    
+    // Automatinis šrifto dydžio prisitaikymas pagal simbolių kiekį
+    const ilgis = tekstas.length;
+    
+    if (ilgis > 25) {
+        ekranas.classList.add('text-micro');     // Labai mažas šriftas
+    } else if (ilgis > 20) {
+        ekranas.classList.add('text-tiny');      // Mažas šriftas
+    } else if (ilgis > 15) {
+        ekranas.classList.add('text-smaller');   // Vidutinis šriftas
+    } else if (ilgis > 10) {
+        ekranas.classList.add('text-small');     // Šiek tiek mažesnis šriftas
+    }
+    // Jei ilgis <= 10, lieka normalus šriftas (jokių klasių)
 }
 
 function isvalytiEkrana() {
@@ -35,10 +67,10 @@ function istrintiPaskutini() {
 }
 
 function pridetiSkaiciu(skaicius) {
-    if (reikiaAtatrinti) {
+    if (ReikiaIstrinti) {
         dabartinisBandymas = '';
         visaIsraiška = '';
-        reikiaAtatrinti = false;
+        ReikiaIstrinti = false;
     }
     dabartinisBandymas += skaicius;
     
@@ -67,10 +99,10 @@ function pridetiVeiksma(veiksmas) {
 }
 
 function pridetiKableli() {
-    if (reikiaAtatrinti) {
+    if (ReikiaIstrinti) {
         dabartinisBandymas = '0';
         visaIsraiška = '0';
-        reikiaAtatrinti = false;
+        ReikiaIstrinti = false;
     }
     
     if (!dabartinisBandymas.includes('.')) {
@@ -133,7 +165,7 @@ function apskaiciuotiRezultata() {
     dabartinisBandymas = rezultatas.toString();
     ankstenisIvestis = '';
     operatorius = '';
-    reikiaAtatrinti = true;
+    ReikiaIstrinti = true;
     atnaujintiEkrana();
 }
 
@@ -165,7 +197,7 @@ function pridetiMatFunkcija(funkcija) {
     }
     
     dabartinisBandymas = rezultatas.toString();
-    reikiaAtatrinti = true;
+    ReikiaIstrinti = true;
     atnaujintiEkrana();
 }
 
@@ -184,7 +216,7 @@ function pridetiSakniesNaujinta() {
     let rezultatas = Math.sqrt(skaicius);
     visaIsraiška = '√(' + dabartinisBandymas + ') = ' + rezultatas;
     dabartinisBandymas = rezultatas.toString();
-    reikiaAtatrinti = true;
+    ReikiaIstrinti = true;
     atnaujintiEkrana();
 }
 

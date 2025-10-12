@@ -79,9 +79,9 @@ body::before {
     height: 80px; /* Sumažintas aukštis mobiliems */
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 2rem; /* Sumažintas šriftas */
+    justify-content: flex-end; /* Tekstas dešinėje kaip tikruose skaičiuotuvuose */
+    text-align: right; /* Dešinėje pusėje */
+    font-size: 2rem; /* Pradinis šriftas */
     font-weight: 400;
     padding: 15px; /* Sumažintas padding */
     margin-bottom: 20px; /* Sumažintas margin */
@@ -93,7 +93,7 @@ body::before {
                 0 0 20px rgba(0, 255, 0, 0.2),
                 0 10px 30px rgba(0, 0, 0, 0.5);
     letter-spacing: 1px; /* Sumažintas letter-spacing */
-    transition: all 0.3s ease;
+    transition: font-size 0.2s ease, letter-spacing 0.2s ease; /* Animacija šrifto keitimui */
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
@@ -101,6 +101,36 @@ body::before {
     overflow-wrap: break-word;
     font-family: 'Fira Code', 'Consolas', monospace;
     text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Automatinio šrifto dydžio klasės pagal teksto ilgį */
+#display.text-small {
+    font-size: 1.8rem;
+    letter-spacing: 0.8px;
+}
+
+#display.text-smaller {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+#display.text-tiny {
+    font-size: 1.2rem;
+    letter-spacing: 0.2px;
+}
+
+#display.text-micro {
+    font-size: 1rem;
+    letter-spacing: 0px;
+}
+
+/* Klaidų pranešimams */
+#display.error-text {
+    font-size: 1.5rem !important;
+    color: #ff3333 !important;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.5) !important;
+    justify-content: center !important;
+    text-align: center !important;
 }
 
 #display::before {
@@ -401,6 +431,23 @@ body::after {
         letter-spacing: 0.5px;
     }
     
+    /* Responsive šrifto klasės tablets */
+    #display.text-small {
+        font-size: 1.5rem;
+    }
+    
+    #display.text-smaller {
+        font-size: 1.2rem;
+    }
+    
+    #display.text-tiny {
+        font-size: 1rem;
+    }
+    
+    #display.text-micro {
+        font-size: 0.9rem;
+    }
+    
     .buttons {
         gap: 8px;
     }
@@ -432,6 +479,23 @@ body::after {
         padding: 10px;
         margin-bottom: 12px;
         letter-spacing: 0px;
+    }
+    
+    /* Responsive šrifto klasės mobiliems */
+    #display.text-small {
+        font-size: 1.3rem;
+    }
+    
+    #display.text-smaller {
+        font-size: 1.1rem;
+    }
+    
+    #display.text-tiny {
+        font-size: 0.9rem;
+    }
+    
+    #display.text-micro {
+        font-size: 0.8rem;
     }
     
     .buttons {
