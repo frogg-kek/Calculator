@@ -246,9 +246,10 @@ class MatrixRain {
     initializeDrops() {
         // Matrix simboliai: skaičiai, raidės, matematikos simboliai
         this.characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-*/=()[]{}πℯ∞√∑∏∫∂∇αβγδεζηθλμξρστφχψω';
-        this.fontSize = 15;
+        this.fontSize = 14;
         this.columns = Math.floor(this.canvas.width / this.fontSize);
         this.drops = [];
+        this.dropSpeed = 0.3; // Pridėtas lėtas kritimo greitis
         
         // Inicializuoti lašus
         for (let i = 0; i < this.columns; i++) {
@@ -258,7 +259,7 @@ class MatrixRain {
     
     draw() {
         // Pusiau skaidrus juodas fonas šleifui
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.08)'; // Šiek tiek ryškesnis fono valymas
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
         // Žalias tekstas
@@ -281,12 +282,12 @@ class MatrixRain {
             this.ctx.fillText(text, x, y);
             
             // Jei lašas pasiekė apačią arba atsitiktinai, atstatyti viršuje
-            if (y > this.canvas.height || Math.random() > 0.98) {
+            if (y > this.canvas.height || Math.random() > 0.995) { // Sumažintas atsitiktinumo dažnis
                 this.drops[i] = 0;
             }
             
-            // Judėti žemyn
-            this.drops[i]++;
+            // Judėti žemyn lėčiau
+            this.drops[i] += this.dropSpeed;
         }
     }
     
