@@ -38,26 +38,18 @@ body::before {
 }
 
 .calculator {
-    width: 100%; /* Pradžioje 100% plotis */
-    max-width: 450px; /* Maksimalus plotis */
-    min-width: 280px; /* Minimalus plotis */
+    width: 100%; 
+    max-width: 450px; 
+    min-width: 280px;
     background: rgba(0, 20, 0, 0.98);
-    backdrop-filter: blur(15px);
     border-radius: 15px;
     box-shadow: 
         0 0 50px rgba(0, 255, 0, 0.4),
         inset 0 1px 0 rgba(0, 255, 0, 0.3),
         0 20px 50px rgba(0, 0, 0, 0.8);
-    padding: 20px; /* Sumažintas padding */
+    padding: 20px;
     border: 2px solid rgba(0, 255, 0, 0.4);
-    position: relative;
-    animation: hackerGlow 2s ease-in-out infinite alternate;
-    z-index: 10;
-}
-
-@keyframes hackerGlow {
-    0% { box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 1px 0 rgba(0, 255, 0, 0.2), 0 15px 35px rgba(0, 0, 0, 0.5); }
-    100% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.5), inset 0 1px 0 rgba(0, 255, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.7); }
+    
 }
 
 .calculator::before {
