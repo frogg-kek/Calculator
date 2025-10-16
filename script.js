@@ -22,16 +22,14 @@ function atnaujintiEkrana() {
 }
 
 function prisitaikytiSrifta(ekranas, tekstas) {
-    // Pašalinti visas esamas šrifto klases
     ekranas.classList.remove('text-small', 'text-smaller', 'text-tiny', 'text-micro', 'error-text');
     
-    // Jei tai klaidos pranešimas
+   
     if (tekstas.includes('AR TU SVEIKAS?')) {
         ekranas.classList.add('error-text');
         return;
     }
     
-    // Automatinis šrifto dydžio prisitaikymas pagal simbolių kiekį
     const ilgis = tekstas.length;
     
     if (ilgis > 25) {
@@ -57,7 +55,6 @@ function isvalytiEkrana() {
 function istrintiPaskutini() {
     if (visaIsraiška.length > 0) {
         visaIsraiška = visaIsraiška.slice(0, -1);
-        // Atnaujinti dabartinisBandymas pagal paskutinį skaičių
         const dalys = visaIsraiška.split(/[\+\-\*\/\^]/);
         dabartinisBandymas = dalys[dalys.length - 1] || '';
     } else if (dabartinisBandymas.length > 0) {
@@ -74,7 +71,6 @@ function pridetiSkaiciu(skaicius) {
     }
     dabartinisBandymas += skaicius;
     
-    // Atnaujinti visą išraišką
     if (operatorius && ankstenisIvestis !== '') {
         visaIsraiška = ankstenisIvestis + ' ' + operatorius + ' ' + dabartinisBandymas;
     } else {
