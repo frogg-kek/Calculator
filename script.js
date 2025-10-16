@@ -16,8 +16,6 @@ function atnaujintiEkrana() {
     }
     
     ekranas.value = tekstas;
-    
-    // Automatiškai keisti šrifto dydį pagal teksto ilgį
     prisitaikytiSrifta(ekranas, tekstas);
 }
 
@@ -33,15 +31,14 @@ function prisitaikytiSrifta(ekranas, tekstas) {
     const ilgis = tekstas.length;
     
     if (ilgis > 25) {
-        ekranas.classList.add('text-micro');     // Labai mažas šriftas
+        ekranas.classList.add('text-micro');     
     } else if (ilgis > 20) {
-        ekranas.classList.add('text-tiny');      // Mažas šriftas
+        ekranas.classList.add('text-tiny');      
     } else if (ilgis > 15) {
-        ekranas.classList.add('text-smaller');   // Vidutinis šriftas
+        ekranas.classList.add('text-smaller');  
     } else if (ilgis > 10) {
-        ekranas.classList.add('text-small');     // Šiek tiek mažesnis šriftas
+        ekranas.classList.add('text-small');     
     }
-    // Jei ilgis <= 10, lieka normalus šriftas (jokių klasių)
 }
 
 function isvalytiEkrana() {
