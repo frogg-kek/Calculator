@@ -3,7 +3,7 @@ let dabartinisBandymas = '';
 let ankstenisIvestis = '';
 let operatorius = '';
 let ReikiaIstrinti = false;
-let visaIsraiška = ''; // Visa išraiška rodymui
+let visaIsraiška = ''; 
 
 function atnaujintiEkrana() {
     const ekranas = document.getElementById('display');
@@ -251,7 +251,6 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// Matrix Rain Effect
 class MatrixRain {
     constructor() {
         this.canvas = document.getElementById('matrix-canvas');
@@ -269,12 +268,11 @@ class MatrixRain {
     }
     
     initializeDrops() {
-        // Matrix simboliai: skaičiai, raidės, matematikos simboliai
         this.characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-*/=()[]{}πℯ∞√∑∏∫∂∇αβγδεζηθλμξρστφχψω';
         this.fontSize = 14;
         this.columns = Math.floor(this.canvas.width / this.fontSize);
         this.drops = [];
-        this.dropSpeed = 0.3; // Pridėtas lėtas kritimo greitis
+        this.dropSpeed = 0.3; 
         
         // Inicializuoti lašus
         for (let i = 0; i < this.columns; i++) {
@@ -283,35 +281,32 @@ class MatrixRain {
     }
     
     draw() {
-        // Pusiau skaidrus juodas fonas šleifui
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.08)'; // Šiek tiek ryškesnis fono valymas
+     
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Žalias tekstas
+       
         this.ctx.fillStyle = '#00ff00';
         this.ctx.font = `${this.fontSize}px 'Fira Code', monospace`;
         
         for (let i = 0; i < this.drops.length; i++) {
-            // Atsitiktinis simbolis
             const text = this.characters[Math.floor(Math.random() * this.characters.length)];
             
             // Apskaičiuoti poziciją
             const x = i * this.fontSize;
             const y = this.drops[i] * this.fontSize;
-            
-            // Gradient efektas - šviesesnės viršuje
+    
             const alpha = Math.max(0.1, 1 - (y / this.canvas.height));
             this.ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
             
-            // Nupiešti simbolį
             this.ctx.fillText(text, x, y);
             
-            // Jei lašas pasiekė apačią arba atsitiktinai, atstatyti viršuje
-            if (y > this.canvas.height || Math.random() > 0.995) { // Sumažintas atsitiktinumo dažnis
+         
+            if (y > this.canvas.height || Math.random() > 0.995) { 
                 this.drops[i] = 0;
             }
             
-            // Judėti žemyn lėčiau
+           
             this.drops[i] += this.dropSpeed;
         }
     }
@@ -321,8 +316,6 @@ class MatrixRain {
         requestAnimationFrame(() => this.animate());
     }
 }
-
-// Paleisti Matrix efektą kai puslapis užkrautas
 document.addEventListener('DOMContentLoaded', () => {
     new MatrixRain();
 });
